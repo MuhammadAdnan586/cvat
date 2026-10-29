@@ -36,3 +36,14 @@
 
 (Raw output of 5 runs, median and spread, to be added.)
 
+
+## MO-1: Endpoint latency
+
+| Field | Entry |
+|---|---|
+| What is measured | Total response time of GET /api/tasks/6/annotation-counts, as seen by the client |
+| How | `curl.exe -w "%{time_total}"` against http://localhost:8080, 1 warm-up request discarded, then 5 timed runs; raw output in docs/evidence/speed-raw.txt |
+| Target | Median of 5 runs at or below 150 ms |
+| Why this number | The page will render a chart from this one call; 150 ms keeps the call well under the point where a user notices a delay. It includes three count queries plus one OPA permission call, so it is not trivially met. |
+| Conditions | Local Docker stack, task 6 (20 images, 129 annotations, no tracks or tags), authenticated as adnan, nothing else heavy running |
+| Not included | First request after a server restart (cold start), tasks with many more annotations |
