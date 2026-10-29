@@ -57,3 +57,15 @@ Median 400.5 ms, min 363 ms, max 2098 ms.
 Target (median at or below 150 ms): MISSED, about 2.7 times over.
 The 2098 ms run is an unexplained outlier; it is kept in the spread.
 Cause of the miss: not yet established. See the baseline comparison below.
+
+### MO-1 baseline comparison
+
+To see where the time goes, the same 6 requests (first discarded) were sent to a light
+authenticated endpoint, GET /api/users/self, with the same login. Raw output: docs/evidence/baseline-raw.txt.
+Five timed runs, in ms: 300, 302, 328, 502, 301. Median 301.9 ms, min 300.2 ms, max 502.2 ms.
+
+Reading: the counts endpoint (median 400.5 ms) is about 99 ms above this baseline. Most of the
+time is therefore shared request overhead (authentication, proxy, permission service), not the
+count queries. This suggests the 150 ms target was set below what this machine can do for any
+authenticated call. It was not measured separately for auth and for the queries, so the split is an estimate.
+The target is left as written and is reported as missed.
