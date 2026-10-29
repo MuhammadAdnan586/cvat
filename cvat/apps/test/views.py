@@ -2,6 +2,7 @@
 
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.generics import get_object_or_404
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -12,6 +13,10 @@ from .counts import count_annotations_by_label
 
 
 class TaskAnnotationCountsView(APIView):
+    # The default PolicyEnforcer needs a ViewSet (view.detail, iam_permission_class).
+    # This is a plain APIView, so the task-level OPA check is done explicitly in get().
+    permission_classes = [IsAuthenticated]
+
     def get(self, request, task_id: int):
         task = get_object_or_404(Task, pk=task_id)
 
