@@ -44,4 +44,5 @@ link as evidence. A line with no evidence counts as unticked.
 
 - [x] Everything I did not finish is listed, with the reason.
   Evidence: docs/plan.md, section "Not reached".
-- [ ] Recording is 5 minutes or less and answers K1 to K4. Not done yet.
+- [x] Recording is 5 minutes or less and answers K1 to K4.
+  Evidence: https://www.loom.com/share/095a838d44eb466b846f534fd98c7272
