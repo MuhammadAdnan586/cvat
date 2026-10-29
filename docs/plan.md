@@ -64,13 +64,21 @@ happened after the start time and are counted.
 
 
 
-\## Scope decisions to make early
+\## Scope decisions
 
 \- The machine has about 8 GB RAM, so I will use 500 images, not the full 5,000.
 
-\- Whether the count includes shapes only, or also tracks and tags.
+\- Decision: count LabeledShape, LabeledTrack and LabeledImage (tags) per
 
-&#x20; I will decide after reading the models and record it here.
+&#x20; Label. Skip LabeledInterval (audio only) and TrackedShape (a track is
+
+&#x20; counted once, not once per frame). Reason: the abstract `Annotation` model
+
+&#x20; in cvat/apps/engine/models.py gives all of them a `label` and a `job`.
+
+\- Label name is read through `label\_\_name`, not through `Label.task`,
+
+&#x20; because tasks inside a project take their labels from `Label.project`.
 
 
 
