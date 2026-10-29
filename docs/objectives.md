@@ -47,3 +47,13 @@
 | Why this number | The page will render a chart from this one call; 150 ms keeps the call well under the point where a user notices a delay. It includes three count queries plus one OPA permission call, so it is not trivially met. |
 | Conditions | Local Docker stack, task 6 (20 images, 129 annotations, no tracks or tags), authenticated as adnan, nothing else heavy running |
 | Not included | First request after a server restart (cold start), tasks with many more annotations |
+
+### MO-1 result (29 Oct 2026, local Docker stack)
+
+Raw output: docs/evidence/speed-raw.txt. The first request (949 ms) was discarded as warm-up.
+Five timed runs, in ms: 2098, 401, 407, 388, 363.
+Median 400.5 ms, min 363 ms, max 2098 ms.
+
+Target (median at or below 150 ms): MISSED, about 2.7 times over.
+The 2098 ms run is an unexplained outlier; it is kept in the spread.
+Cause of the miss: not yet established. See the baseline comparison below.
