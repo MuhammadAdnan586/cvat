@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 
 from django.views.generic import TemplateView
-from rest_framework.exceptions import PermissionDenied
+from rest_framework.exceptions import PermissionDenied, ValidationError
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -10,7 +10,7 @@ from rest_framework.views import APIView
 from cvat.apps.engine.models import Task
 from cvat.apps.engine.permissions import TaskPermission
 
-from .counts import count_annotations_by_label
+from .counts import ANNOTATION_KINDS, count_annotations_by_label
 
 
 class TaskAnnotationCountsView(APIView):
@@ -25,10 +25,19 @@ class TaskAnnotationCountsView(APIView):
         if not permission.check_access().allow:
             raise PermissionDenied("You do not have access to this task.")
 
-        counts = count_annotations_by_label(task.id)
+        requested = request.query_params.get("type")
+        kinds = requested.split(",") if requested else list(ANNOTATION_KINDS)
+        unknown = sorted(set(kinds) - set(ANNOTATION_KINDS))
+        if unknown:
+            raise ValidationError(
+                f"Unknown type(s): {', '.join(unknown)}. Allowed: {', '.join(ANNOTATION_KINDS)}."
+            )
+
+        counts = count_annotations_by_label(task.id, kinds)
         return Response(
             {
                 "task_id": task.id,
+                "types": kinds,
                 "total": sum(counts.values()),
                 "counts": [
                     {"label": label, "count": count}
