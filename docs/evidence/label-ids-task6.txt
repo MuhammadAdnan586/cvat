@@ -1,0 +1,81 @@
+66 objects imported automatically (use -v 2 for details).
+401 person
+402 bicycle
+403 car
+404 motorcycle
+405 airplane
+406 bus
+407 train
+408 truck
+409 boat
+410 traffic light
+411 fire hydrant
+412 stop sign
+413 parking meter
+414 bench
+415 bird
+416 cat
+417 dog
+418 horse
+419 sheep
+420 cow
+421 elephant
+422 bear
+423 zebra
+424 giraffe
+425 backpack
+426 umbrella
+427 handbag
+428 tie
+429 suitcase
+430 frisbee
+431 skis
+432 snowboard
+433 sports ball
+434 kite
+435 baseball bat
+436 baseball glove
+437 skateboard
+438 surfboard
+439 tennis racket
+440 bottle
+441 wine glass
+442 cup
+443 fork
+444 knife
+445 spoon
+446 bowl
+447 banana
+448 apple
+449 sandwich
+450 orange
+451 broccoli
+452 carrot
+453 hot dog
+454 pizza
+455 donut
+456 cake
+457 chair
+458 couch
+459 potted plant
+460 bed
+461 dining table
+462 toilet
+463 tv
+464 laptop
+465 mouse
+466 remote
+467 keyboard
+468 cell phone
+469 microwave
+470 oven
+471 toaster
+472 sink
+473 refrigerator
+474 book
+475 clock
+476 vase
+477 scissors
+478 teddy bear
+479 hair drier
+480 toothbrush
