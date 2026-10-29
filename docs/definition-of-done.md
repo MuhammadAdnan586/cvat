@@ -6,7 +6,7 @@ link as evidence. A line with no evidence counts as unticked.
 ## Floor (items 1 to 4)
 
 - [x] Endpoint returns correct per-class counts, checked against a known task.
-  Evidence: task 6 total is 129, equal to the database count taken in the Django shell; the first 12 per-class counts equal known-counts.txt. Files: docs/evidence/counts-task6-200.json, docs/evidence/known-counts.txt. Commits e4717c5, c60e889, 99c324b.
+  Evidence: task 6 total is 129, equal to the database count taken in the Django shell; the first 12 rows of known-counts.txt (taken before the endpoint was written) match the endpoint once label ids are mapped to names with docs/evidence/label-ids-task6.txt (401 person 53, 451 broccoli 13, 403 car 11, 450 orange 5, 457 chair 4, 428 tie 4, 402 bicycle 3, 415 bird 3, 455 donut 3, 426 umbrella 3, 460 bed 2, 437 skateboard 2). The remaining rows of that file were not compared. Files: docs/evidence/counts-task6-200.json, docs/evidence/known-counts.txt. Commits e4717c5, c60e889, 99c324b.
 - [x] Page calls the endpoint and renders the counts as a graph.
   Evidence: docs/evidence/ui-chart.png (task 6, person is the longest bar at 53). Commit 7421142. Note: the page is served by the test app, not by cvat-ui (see plan, Decision 1).
 - [x] Empty state (task with no annotations) handled.
