@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: MIT
 
+from django.views.generic import TemplateView
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
@@ -35,3 +36,12 @@ class TaskAnnotationCountsView(APIView):
                 ],
             }
         )
+
+
+class TaskAnnotationCountsPageView(TemplateView):
+    template_name = "test/annotation_counts.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["task_id"] = kwargs["task_id"]
+        return context
